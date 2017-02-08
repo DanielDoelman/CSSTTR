@@ -1,3 +1,3 @@
-# Components
+# Daniel Doelman
 
-Rating example makes use of Emoji from: http://emojione.com
+CSS To The Rescue
