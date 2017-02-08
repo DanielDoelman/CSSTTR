@@ -1,0 +1,106 @@
+out: ../styles.css, sourcemap: false, compress: false
+
+@grey: #cccccc;
+@orange: #F7A100;
+@ligtBlue: #E6F2F7;
+@black: #333;
+
+body {
+  font-family: Helvetica, Arial, Sans-Serif;
+  margin: 0;
+  padding-top: 3.750em;
+}
+
+@font-face {
+	font-family: Exclamation Mark;
+	src: local('Baskerville-Italic'), local('GoudyOldStyleT-Italic'), local('Garamond-Italic'), local('Palatino-Italic');
+	unicode-range: U+0021;
+}
+
+header {
+  background-color: @orange;
+  height: 3.750em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    color: @black;
+    font-size: 1.75rem;
+    margin: 0;
+    color: white;
+  }
+}
+
+h2 {
+  color: @black;
+  line-height: 3.250em;
+  font-size: 1em;
+  margin: 0;
+  display: block;
+  padding: 0 1.5rem;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1em;
+  line-height: 1em;
+  font-family: Exclamation Mark, Helvetica, sans-serif;
+}
+
+hr {
+  margin: 3em 0;
+}
+
+section {
+
+  &.chat {
+    max-width: 33vw;
+  }
+
+  ol {
+
+    li {
+
+      &:nth-of-type(odd) {
+        background-color: @ligtBlue;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+
+    }
+
+    textarea {
+
+    }
+
+    button {
+
+    }
+  }
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+	top: 50%; left: 50%;
+	margin: -5em;
+	box-shadow: 0 0 0 50vmax rgba(0,0,0,.8);
+  visibility: hidden;
+  padding: 1em;
+}
+
+.loginButton:focus ~ .popup {
+  visibility: visible;;
+}
+
+.close:focus ~ .popup {
+  visibility: hidden;
+}

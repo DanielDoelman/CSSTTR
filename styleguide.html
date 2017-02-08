@@ -12,9 +12,74 @@
 </head>
 <body>
 
-<h1>Living Styleguide</h1>
+<header>
+  <h1>Living Styleguide</h1>
+</header>
 
-<!-- place components or patterns here -->
+<!-- Chat.html -->
+<section class="chat">
+  <h2>Chat.html</h2>
+  <ol>
+      <li>
+          <p>
+              Hey!
+          </p>
+          <footer>
+              <p>Posted on <time datatime="2015-01-22T10:25">10:25 AM</time> by you</p>
+              <p data-status="READ">Has been read</p>
+          </footer>
+      </li>
+      <li>
+          <p>
+              Hey! Sorry I was busy
+          </p>
+          <footer>
+              <p>Posted on <time datatime="2017-02-03T14:19">2:19 PM</time> by John</p>
+          </footer>
+      </li>
+      <li>
+          <p>
+              I sent that 2 years ago
+          </p>
+          <footer>
+              <p>Posted on <time datatime="2017-02-03T14:22">2:22 PM</time> by you</p>
+              <p data-status="DELIVERED">Has been delivered</p>
+          </footer>
+      </li>
+  </ol>
+
+  <form action="/" method="post">
+      <label for="field-message">Message</label>
+      <textarea name="field-message" id="field-message"></textarea>
+      <button type="submit">Send</button>
+  </form>
+</section>
+<!-- End Chat.html -->
+<hr />
+<!-- Chat.html -->
+<section class="login">
+  <h2>Login.html</h2>
+  <button class="loginButton">Inloggen</button>
+
+  <form action="/" method="post" class="popup">
+      <button class="close">x</button>
+      <label for="field-email">Email</label>
+      <input type="email" id="field-email" name="field-email" autocomplete="email" required autofocus>
+
+      <label for="field-password">Password</label>
+      <input type="password" id="field-password" name="field-password" required>
+
+      <input type="checkbox" id="field-stay-logged-in" name="field-stay-logged-in" value="stay-logged-in">
+      <label for="field-stay-logged-in">Stay logged in</label>
+
+      <a href="/">Forgot password</a>
+
+      <button type="submit">Login</button>
+  </form>
+
+</section>
+<!-- End Login.html -->
+<hr />
 
 </body>
 </html>
