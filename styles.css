@@ -1,67 +1,160 @@
-body {
-  font-family: Helvetica, Arial, Sans-Serif;
-  margin: 0;
-  padding-top: 3.750em;
-}
 @font-face {
-  font-family: Exclamation Mark;
-  src: local('Baskerville-Italic'), local('GoudyOldStyleT-Italic'), local('Garamond-Italic'), local('Palatino-Italic');
-  unicode-range: U+0021;
+  font-family: Ampersand;
+  src: local('Delicious'), local('Goudy Old Style'), local('Palatino'), local('Book Antiqua');
+  unicode-range: 0026;
 }
-header {
-  background-color: #F7A100;
-  height: 3.750em;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  text-align: center;
-}
-header h1 {
-  color: #333;
-  font-size: 1.75rem;
+body {
   margin: 0;
-  color: white;
+  font-family: 'Montserrat', sans-serif;
 }
-h2 {
-  color: #333;
-  line-height: 3.250em;
-  font-size: 1em;
-  margin: 0;
+img {
+  max-width: 100%;
+}
+h3 {
+  font-family: "Ampersand", "Montserrat", Helvetica, Arial, sans-serif;
+}
+form {
   display: block;
-  padding: 0 1.5rem;
 }
-p {
-  font-weight: 300;
+form label {
+  display: inherit;
+  margin-top: 2em;
+  margin-bottom: 0.625em;
+}
+form label[for="field-stay-logged-in"] {
+  display: inline-block;
+}
+form input {
+  display: inherit;
+  height: 3em;
+  border: 2px solid #F7A100;
+  background-color: white;
+  width: 100%;
+}
+form input[id="field-stay-logged-in"] {
+  display: inline-block;
+  width: initial;
+  height: initial;
+}
+form a {
+  display: inherit;
+}
+form button[type="submit"] {
+  background-color: #0071B3;
+  color: white;
+  padding: 0.5em 1.5em;
+  border-radius: 2px;
+  border: none;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 2em;
+}
+#close {
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #F7A100;
+  padding: 0.5em;
+  text-align: center;
   font-size: 1em;
   line-height: 1em;
-  font-family: Exclamation Mark, Helvetica, sans-serif;
+  text-decoration: none;
+  color: white;
 }
-hr {
-  margin: 3em 0;
-}
-section.chat {
-  max-width: 33vw;
-}
-section ol li:nth-of-type(odd) {
-  background-color: #E6F2F7;
-}
-section form {
+header nav ul {
+  background-color: #F7A100;
   display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  position: relative;
+  padding: 0 5em;
+}
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  line-height: 3.250em;
+  font-size: 1em;
+  margin: 0 1.5em;
+}
+header nav ul li ul {
+  display: none;
   flex-direction: column;
+  position: absolute;
+  top: 0;
 }
-.popup {
-  display: flex;
+header .modal {
+  width: 15em;
+  display: none;
   position: fixed;
-  top: 50%;
   left: 50%;
-  margin: -5em;
-  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.8);
-  visibility: hidden;
-  padding: 1em;
+  top: 50%;
+  padding: 1.5em 1.5em 1.25em;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* Translate to middle */
+  background: white;
+  box-shadow: 0 0 0 150vw rgba(0, 0, 0, 0.8);
+  /* De-emphasize trick */
 }
-.loginButton:focus ~ .popup {
-  visibility: visible;
+header #login:target ~ .modal {
+  display: block;
 }
-.close:focus ~ .popup {
-  visibility: hidden;
+main {
+  padding: 0 6.5em;
+  transition: .8s filter;
+}
+main #chatbox {
+  height: 16em;
+  overflow-y: scroll;
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  max-width: 20em;
+  border: 2px solid #F7A100;
+}
+main #chatbox li {
+  padding: .2em 1em;
+  display: flex;
+  flex-wrap: wrap;
+}
+main #chatbox li:nth-of-type(odd) {
+  background-color: rgba(0, 113, 179, 0.15);
+}
+main #chatbox li p {
+  font-size: 1em;
+  flex: 0 0 100%;
+}
+main #chatbox li footer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+main #chatbox li footer p {
+  font-size: .6em;
+  text-align: right;
+}
+main #chatbox li footer p[data-status="READ"] {
+  color: green;
+}
+main #chatbox li footer p[data-status="DELIVERED"] {
+  color: #F7A100;
+}
+#popup {
+  display: none;
+  position: fixed;
+  background: white;
+  border: 2px solid #F7A100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em 3em;
+}
+#popup:target {
+  display: block;
+  z-index: 3;
+}
+#popup:target ~ main {
+  filter: blur(3px) contrast(0.8) brightness(0.8);
 }
