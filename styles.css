@@ -49,6 +49,23 @@ form button[type="submit"] {
   font-size: 1em;
   margin-top: 2em;
 }
+#popup {
+  display: none;
+  position: fixed;
+  background: white;
+  border: 2px solid #F7A100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em 3em;
+}
+#popup:target {
+  display: block;
+  z-index: 3;
+}
+#popup:target ~ main {
+  filter: blur(3px) contrast(0.8) brightness(0.8);
+}
 #close {
   width: 1em;
   height: 1em;
@@ -140,21 +157,4 @@ main #chatbox li footer p[data-status="READ"] {
 }
 main #chatbox li footer p[data-status="DELIVERED"] {
   color: #F7A100;
-}
-#popup {
-  display: none;
-  position: fixed;
-  background: white;
-  border: 2px solid #F7A100;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1em 3em;
-}
-#popup:target {
-  display: block;
-  z-index: 3;
-}
-#popup:target ~ main {
-  filter: blur(3px) contrast(0.8) brightness(0.8);
 }

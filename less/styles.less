@@ -71,6 +71,26 @@ form {
   }
 }
 
+#popup {
+  display: none;
+  position: fixed;
+  background: white;
+  border: 2px solid @orange;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em 3em;
+
+  &:target {
+    display:block;
+    z-index: 3;
+
+    ~ main {
+      filter: blur(3px) contrast(.8) brightness(.8);
+    }
+  }
+}
+
 #close{
   width: 1em;
   height: 1em;
@@ -185,26 +205,6 @@ main {
           }
         }
       }
-    }
-  }
-}
-
-#popup {
-  display: none;
-  position: fixed;
-  background: white;
-  border: 2px solid @orange;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1em 3em;
-
-  &:target {
-    display:block;
-    z-index: 3;
-
-    ~ main {
-      filter: blur(3px) contrast(.8) brightness(.8);
     }
   }
 }
