@@ -189,6 +189,7 @@ main {
   width: 100%;
   max-width: 20em;
   border: 2px solid @orange;
+  margin-bottom: 0;
 
   li {
     padding: .2em 1em;
@@ -223,6 +224,29 @@ main {
         color: @orange;
       }
     }
+  }
+}
+
+.chatboxForm {
+  background-color: @orange;
+  max-width: 20em;
+  border: 2px solid @orange;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: white;
+    margin: .5em;
+  }
+
+  textarea {
+    height: 5em;
+    margin: .5em;
+  }
+
+  button {
+    margin: .5em;
   }
 }
 

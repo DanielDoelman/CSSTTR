@@ -143,6 +143,7 @@ main {
   width: 100%;
   max-width: 20em;
   border: 2px solid #F7A100;
+  margin-bottom: 0;
 }
 .chatbox li {
   padding: .2em 1em;
@@ -170,6 +171,25 @@ main {
 }
 .chatbox footer p[data-status="DELIVERED"] {
   color: #F7A100;
+}
+.chatboxForm {
+  background-color: #F7A100;
+  max-width: 20em;
+  border: 2px solid #F7A100;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.chatboxForm label {
+  color: white;
+  margin: .5em;
+}
+.chatboxForm textarea {
+  height: 5em;
+  margin: .5em;
+}
+.chatboxForm button {
+  margin: .5em;
 }
 figcaption {
   -moz-column-count: 3;
