@@ -31,7 +31,7 @@ form input {
   background-color: white;
   width: 100%;
 }
-form input[id="field-stay-logged-in"] {
+form input[type=checkbox] {
   display: inline-block;
   width: initial;
   height: initial;
@@ -86,7 +86,7 @@ header nav ul {
   flex-wrap: wrap;
   list-style: none;
   position: relative;
-  padding: 0 5em;
+  padding: 0 2em;
 }
 header nav ul li a {
   text-decoration: none;
@@ -94,12 +94,29 @@ header nav ul li a {
   line-height: 3.250em;
   font-size: 1em;
   margin: 0 1.5em;
+  display: inline-block;
+}
+header nav ul li input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -1px;
+  opacity: 0;
+  z-index: 1;
+}
+header nav ul li input:checked ~ ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 header nav ul li ul {
-  display: none;
   flex-direction: column;
+  display: none;
+  margin-top: 2em;
+  padding: 0;
   position: absolute;
   top: 0;
+  padding: 1em;
 }
 header .modal {
   display: none;
@@ -116,9 +133,9 @@ header #login:target ~ .modal {
   display: block;
 }
 main {
-  padding: 0 6.5em;
+  padding: 0 3em;
 }
-main #chatbox {
+.chatbox {
   height: 16em;
   overflow-y: scroll;
   list-style: none;
@@ -127,30 +144,42 @@ main #chatbox {
   max-width: 20em;
   border: 2px solid #F7A100;
 }
-main #chatbox li {
+.chatbox li {
   padding: .2em 1em;
   display: flex;
   flex-wrap: wrap;
 }
-main #chatbox li:nth-of-type(odd) {
+.chatbox li:nth-of-type(odd) {
   background-color: rgba(0, 113, 179, 0.15);
 }
-main #chatbox li p {
+.chatbox p {
   font-size: 1em;
   flex: 0 0 100%;
 }
-main #chatbox li footer {
+.chatbox footer {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
-main #chatbox li footer p {
+.chatbox footer p {
   font-size: .6em;
   text-align: right;
 }
-main #chatbox li footer p[data-status="READ"] {
+.chatbox footer p[data-status="READ"] {
   color: green;
 }
-main #chatbox li footer p[data-status="DELIVERED"] {
+.chatbox footer p[data-status="DELIVERED"] {
   color: #F7A100;
+}
+figcaption {
+  -moz-column-count: 3;
+  -moz-column-gap: 40px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 40px;
+  column-count: 3;
+  column-gap: 40px;
+  min-height: 100%;
+}
+figcaption p {
+  margin-top: 0;
 }

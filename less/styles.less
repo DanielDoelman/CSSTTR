@@ -48,7 +48,7 @@ form {
     background-color: white;
     width: 100%;
 
-    &[id="field-stay-logged-in"] {
+    &[type=checkbox] {
       display: inline-block;
       width: initial;
       height: initial;
@@ -116,7 +116,7 @@ header {
       flex-wrap: wrap;
       list-style: none;
       position: relative;
-      padding: 0 5em;
+      padding: 0 2em;
 
       li {
 
@@ -126,13 +126,32 @@ header {
           line-height: 3.250em;
           font-size: 1em;
           margin: 0 1.5em;
+          display: inline-block;
+        }
+
+        input {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: -1px;
+          opacity: 0;
+          z-index: 1;
+
+          &:checked ~ ul {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+          }
         }
 
         ul {
-          display: none;
           flex-direction: column;
+          display: none;
+          margin-top: 2em;
+          padding: 0;
           position: absolute;
           top: 0;
+          padding: 1em;
         }
       }
     }
@@ -159,50 +178,64 @@ header {
 }
 
 main {
-  padding: 0 6.5em;
+  padding: 0 3em;
+}
 
-  #chatbox {
-    height: 16em;
-    overflow-y: scroll;
-    list-style: none;
-    padding-left: 0;
+.chatbox {
+  height: 16em;
+  overflow-y: scroll;
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+  max-width: 20em;
+  border: 2px solid @orange;
+
+  li {
+    padding: .2em 1em;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    &:nth-of-type(odd) {
+      background-color: fade(@blue, 15%);
+    }
+  }
+
+  p {
+    font-size: 1em;
+    flex: 0 0 100%;
+  }
+
+  footer {
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    max-width: 20em;
-    border: 2px solid @orange;
 
-    li {
-      padding: .2em 1em;
-      display: flex;
-      flex-wrap: wrap;
+    p {
+      font-size: .6em;
+      text-align: right;
 
-
-      &:nth-of-type(odd) {
-        background-color: fade(@blue, 15%);
+      &[data-status="READ"] {
+        color: green;
       }
 
-      p {
-        font-size: 1em;
-        flex: 0 0 100%;
-      }
-
-      footer {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-
-        p {
-          font-size: .6em;
-          text-align: right;
-
-          &[data-status="READ"] {
-            color: green;
-          }
-
-          &[data-status="DELIVERED"] {
-            color: @orange;
-          }
-        }
+      &[data-status="DELIVERED"] {
+        color: @orange;
       }
     }
+  }
+}
+
+figcaption {
+  -moz-column-count: 3;
+  -moz-column-gap: 40px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 40px;
+  column-count: 3;
+  column-gap: 40px;
+  min-height: 100%;
+
+  p {
+    margin-top: 0;
   }
 }
