@@ -80,6 +80,66 @@ form button[type="submit"] {
   text-decoration: none;
   color: white;
 }
+.supriseButton {
+  position: fixed;
+  right: 0;
+  top: 35%;
+  background-color: #F7A100;
+  color: white;
+  padding: 0.5em 1.5em;
+  text-decoration: none;
+}
+.supriseButton:hover {
+  cursor: help;
+}
+input:not(:focus) + .callout:not(:hover) {
+  transform: scale(0);
+  transition: .25s transform;
+}
+.callout {
+  transition: 0.5s cubic-bezier(0.25, 0.1, 0.3, 1.5) transform;
+  transform-origin: 1.4em -0.4em;
+  position: absolute;
+  max-width: 19em;
+  padding: .6em .8em;
+  border-radius: .3em;
+  margin: 0.3em 0 0 -0.2em;
+  background: #F7A100;
+  font-size: 75%;
+}
+.callout:before {
+  content: "";
+  position: absolute;
+  top: -0.4em;
+  left: 1em;
+  padding: .35em;
+  background: inherit;
+  border: inherit;
+  border-right: 0;
+  border-bottom: 0;
+  transform: rotate(45deg);
+}
+#surprise:target {
+  background: #f0e2db;
+  background-image: linear-gradient(90deg, #43F000 11px, transparent 0), linear-gradient(90deg, #2EA300 23px, transparent 0), linear-gradient(90deg, #1F7000 41px, transparent 0);
+  background-size: 30px 100%, 60px 100%, 90px 100%;
+}
+@keyframes loader {
+  to {
+    background-position: -816px 0;
+  }
+}
+.loader {
+  width: 102px;
+  height: 102px;
+  background: url(img/loader.png) 0 0;
+  animation: loader 1s infinite steps(8);
+  /* Hide text */
+  text-indent: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 2em 0;
+}
 header nav ul {
   background-color: #F7A100;
   display: flex;
@@ -97,7 +157,7 @@ header nav ul li a {
   display: inline-block;
 }
 header nav ul li input {
-  width: 100%;
+  width: 110px;
   height: 100%;
   position: absolute;
   top: -1px;
@@ -193,13 +253,32 @@ main {
 }
 figcaption {
   -moz-column-count: 3;
-  -moz-column-gap: 40px;
+  -moz-column-gap: 2.5em;
   -webkit-column-count: 3;
-  -webkit-column-gap: 40px;
+  -webkit-column-gap: 2.5em;
   column-count: 3;
-  column-gap: 40px;
+  column-gap: 2.5em;
   min-height: 100%;
 }
 figcaption p {
   margin-top: 0;
+}
+.rating {
+  max-width: 15em;
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+}
+.rating fieldset svg {
+  width: 1.2em;
+}
+.rating fieldset input {
+  display: none;
+}
+.rating fieldset input:checked + label {
+  background: #F7A100;
+}
+.rating fieldset label {
+  padding: 0.5em;
+  border-radius: 1em;
 }
