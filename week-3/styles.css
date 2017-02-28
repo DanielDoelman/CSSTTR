@@ -8,6 +8,9 @@
   src: local('Delicious'), local('Goudy Old Style'), local('Palatino'), local('Book Antiqua');
   unicode-range: 0026;
 }
+.ampersand {
+  font-family: Ampersand, "Montserrat", sans-serif;
+}
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -15,6 +18,27 @@ body {
 }
 img {
   max-width: 100%;
+}
+@keyframes loader {
+  to {
+    background-position: -816px 0;
+  }
+}
+.loader {
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 2em 0;
+  width: 102px;
+  height: 102px;
+  background: url(img/loader.png) 0 0;
+  animation: loader 1s infinite steps(8);
+  text-indent: 200%;
+  position: absolute;
+  bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 .modal {
   display: none;
@@ -138,6 +162,12 @@ header h1 {
   padding: 1em 0;
   color: white;
   font-size: 1.8em;
+}
+@media (max-width: 24em) {
+  header h1 {
+    font-size: 1em;
+    line-height: 4.5em;
+  }
 }
 input:not(:focus) + .callout:not(:hover) {
   transform: scale(0);
@@ -346,6 +376,18 @@ main .row article .content {
   box-shadow: 0px 0px 33px 0px rgba(0, 0, 0, 0.08);
   position: relative;
 }
+@media (max-width: 43em) {
+  main .row {
+    flex-direction: column;
+  }
+  main .row article {
+    width: 100%;
+    flex: inherit;
+  }
+  main .row article:first-of-type {
+    flex: inherit;
+  }
+}
 .rating {
   padding-top: 1em;
   font-size: 0.6em;
@@ -388,6 +430,7 @@ fieldset {
   border: none;
   display: flex;
   padding: 0;
+  margin: 0;
 }
 fieldset legend {
   margin: 0 auto;
@@ -395,6 +438,9 @@ fieldset legend {
   color: white;
   font-size: 4em;
   font-weight: 800;
+  width: 100%;
+  background-color: #4285f4;
+  text-align: center;
 }
 fieldset svg {
   display: flex;
@@ -446,12 +492,40 @@ fieldset svg {
   color: white;
   text-decoration: none;
 }
+@media (max-width: 59em) {
+  .progress {
+    padding: 1em 2em;
+  }
+  .progress h1 {
+    font-size: 2em;
+  }
+  .progress progress + ol li {
+    font-size: 1em;
+  }
+}
+@media (max-width: 24em) {
+  .progress progress + ol li {
+    font-size: .6em;
+  }
+}
 .picture-with-subtitle {
   max-width: 30em;
   padding: 1em;
   background-color: white;
-  color: #666;
   margin: 1vw;
+}
+.picture-with-subtitle figure {
+  margin: 0;
+}
+.picture-with-subtitle footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: .8em;
+}
+@media (max-width: 43em) {
+  .picture-with-subtitle {
+    max-width: 100%;
+  }
 }
 .chatbox {
   background-color: #4285f4;
@@ -523,4 +597,18 @@ fieldset svg {
 }
 .chatbox button[type="submit"]:hover {
   background-color: #3ca875;
+}
+@media (max-width: 43em) {
+  .chatbox {
+    flex-direction: column;
+  }
+  .chatbox ol {
+    width: 100%;
+  }
+  .chatbox ol + form[action="/"] {
+    width: 100%;
+  }
+  .chatbox ol li {
+    width: 100%;
+  }
 }

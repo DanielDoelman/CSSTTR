@@ -15,6 +15,10 @@ out: ../styles.css, sourcemap: false, compress: false
     unicode-range: 0026;
 }
 
+.ampersand {
+font-family: Ampersand, "Montserrat", sans-serif;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -24,6 +28,26 @@ body {
 
 img {
   max-width: 100%;
+}
+
+@keyframes loader {
+  to { background-position: -816px 0; }
+}
+
+.loader {
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 2em 0;
+  width: 102px; height: 102px;
+  background: url(img/loader.png) 0 0;
+  animation: loader 1s infinite steps(8);
+  text-indent: 200%;
+  position: absolute;
+  bottom: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .modal {
@@ -169,6 +193,17 @@ header {
     color: white;
     font-size: 1.8em;
   }
+}
+
+@media (max-width: 24em) {
+  header {
+
+    h1 {
+      font-size: 1em;
+      line-height: 4.5em;
+    }
+  }
+
 }
 
 input:not(:focus) + .callout:not(:hover) {
@@ -441,6 +476,24 @@ main {
   }
 }
 
+@media (max-width: 43em) {
+  main {
+
+    .row {
+      flex-direction: column;
+
+      article {
+        width: 100%;
+        flex: inherit;
+
+        &:first-of-type {
+          flex: inherit;
+        }
+      }
+    }
+  }
+}
+
 .rating {
     padding-top: 1em;
     font-size: 0.6em;
@@ -490,6 +543,7 @@ fieldset {
     border: none;
     display: flex;
     padding: 0;
+    margin: 0;
 
     legend {
       margin: 0 auto;
@@ -497,6 +551,9 @@ fieldset {
       color: white;
       font-size: 4em;
       font-weight: 800;
+      width: 100%;
+      background-color: #4285f4;
+      text-align: center;
     }
 
     svg {
@@ -560,12 +617,63 @@ fieldset {
   }
 }
 
+@media (max-width: 59em) {
+  .progress {
+    padding: 1em 2em;
+
+    h1 {
+      font-size: 2em;
+    }
+
+    progress {
+
+      + ol {
+
+        li {
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 24em) {
+  .progress {
+
+    progress {
+
+      + ol {
+
+        li {
+          font-size: .6em;
+        }
+      }
+    }
+  }
+}
+
+
 .picture-with-subtitle {
-    max-width: 30em;
-    padding: 1em;
-    background-color: white;
-    color: #666;;
+  max-width: 30em;
+  padding: 1em;
+  background-color: white;
   margin: 1vw;
+
+  figure {
+    margin: 0;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: .8em;
+  }
+}
+
+@media (max-width: 43em) {
+  .picture-with-subtitle {
+    max-width: 100%;
+  }
 }
 
 .chatbox {
@@ -648,6 +756,24 @@ fieldset {
 
     &:hover {
       background-color: darken(#43bb82, 5%)
+    }
+  }
+}
+@media (max-width: 43em) {
+
+  .chatbox {
+    flex-direction: column;
+
+    ol {
+      width: 100%;
+
+      + form[action="/"] {
+        width: 100%;
+      }
+
+      li {
+        width: 100%;
+      }
     }
   }
 }
