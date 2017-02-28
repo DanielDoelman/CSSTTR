@@ -1,5 +1,9 @@
 out: ../styles.css, sourcemap: false, compress: false
 
+:focus {
+  background-color: #ffb300;
+}
+
 @font-face {
     font-family: Ampersand;
     src: local('Delicious'),
@@ -20,14 +24,88 @@ img {
   max-width: 100%;
 }
 
-// Navigatie
-#overlay {
-    display: none;
+.modal {
+  display: none;
+  width: 15em;
+  background: white;
+  box-shadow: 0 0 0 150vw rgba(0,0,0,.8);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  padding: 2em;
+  transform: translate(-50%, -50%);
 }
 
+#login {
+
+  &:target ~ .modal {
+    display: block;
+    z-index: 9999;
+  }
+}
+
+form {
+  display: block;
+
+  label {
+    display: inherit;
+    margin-top: 2em;
+    margin-bottom: 0.625em;
+
+    &[for="field-stay-logged-in"] {
+      display: inline-block;
+    }
+  }
+
+  input {
+    display: inherit;
+    height: 3em;
+    border: 2px solid #4285f4;
+    background-color: white;
+    width: 100%;
+
+    &[type=checkbox] {
+      display: inline-block;
+      width: initial;
+      height: initial;
+    }
+  }
+
+  a {
+    display: inherit;
+  }
+
+  button[type="submit"] {
+    background-color: #4285f4;
+    color: white;
+    padding: 0.5em 1.5em;
+    border-radius: 2px;
+    border: none;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 2em;
+  }
+}
+
+#close{
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #4285f4;
+  padding: 0.5em;
+  text-align: center;
+  font-size: 1em;
+  line-height: 1em;
+  text-decoration: none;
+  color: white
+}
+
+// Navigatie
 #toggle {
     position: fixed;
-    top: 1.5em;
+    top: 2em;
     left: 1em;
     width: 2.5em;
     height: 2.5em;
@@ -36,10 +114,23 @@ img {
     color: white;
     display: none;
     transition: all ease-out 0.3s;
+    z-index: 9998;
+
+    &:before {
+      content: 'menu';
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      color: white;
+      font-size: .7em;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     i {
         position: relative;
-        top: 50%;
+        top: 40%;
         transform: translateY(-50%);
     }
 }
@@ -48,6 +139,18 @@ header {
   height: 6em;
   text-align: center;
   background-color: #4285f4;
+  margin-bottom: 2em;
+
+  &:before {
+    content: '';
+    height: .6em;
+    width: 100%;
+    background-image: linear-gradient(90deg, #259b24 11px, transparent 0), linear-gradient(90deg, #ff5722 23px, transparent 0), linear-gradient(90deg, #ffb300 41px, transparent 0);
+    background-size: 30px 100%, 60px 100%, 90px 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
   h1 {
     margin: 0;
@@ -57,8 +160,39 @@ header {
   }
 }
 
+input:not(:focus) + .callout:not(:hover) {
+	transform: scale(0);
+	transition: .25s transform;
+}
+
+.callout {
+  transition: .5s cubic-bezier(.25,.1,.3,1.5) transform;
+	transform-origin: 1.4em -.4em;
+	position: absolute;
+	max-width: 19em;
+	padding: .6em .8em;
+	border-radius: .3em;
+	margin: .3em 0 0 -.2em;
+	background: #4285f4;
+	font-size: 75%;
+
+  &:before {
+    content: "";
+  	position: absolute;
+  	top: -.4em;
+  	left: 1em;
+  	padding: .35em;
+  	background: inherit;
+  	border: inherit;
+  	border-right: 0;
+  	border-bottom: 0;
+  	transform: rotate(45deg);
+  }
+}
+
 #menu {
     transition: all ease-out 0.3s;
+    padding: 1em 0;
 
     a {
         color: white;
@@ -156,7 +290,11 @@ header {
                 display: none;
                 position: static;
                 width: 100%;
-                background-color: #1d1d1b;
+                background-color: fade(#ffffff, 20%);
+
+                li {
+                  font-size: .8em;
+                }
             }
 
             &:hover {
@@ -222,7 +360,6 @@ main {
       justify-content: flex-start;
       width: 50%;
       height: max-content;
-      padding: 4em 0 2em 0;
       box-sizing: border-box;
       color: #333;
       flex: 1 0 0;
@@ -282,7 +419,6 @@ main {
     padding-top: 1em;
     font-size: 0.6em;
     background-color: #4285f4;
-    margin: 1vw;
 
     .rating-row {
         display: flex;
@@ -324,8 +460,6 @@ main {
     }
 }
 
-
-
 fieldset {
     border: none;
     display: flex;
@@ -336,10 +470,65 @@ fieldset {
       padding: 1em 0;
       color: white;
       font-size: 4em;
+      font-weight: 800;
     }
 
     svg {
       display: flex;
       width: 1.5em;
     }
+}
+
+.progress {
+  padding: 1em 9em;
+  font-size: 0.6em;
+  background-color: #4285f4;
+  margin: 1vw;
+
+  h1 {
+    margin: 0 auto;
+    padding: 1em 0;
+    color: white;
+    font-size: 4em;
+    text-align: center;
+  }
+
+  progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 2em;
+    width: 100%;
+
+    &::-webkit-progress-bar {
+      background-color: #414149;
+    }
+
+
+    &::-webkit-progress-value {
+      background-color: white;
+    }
+
+    + ol {
+      flex-direction: row;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-left: 0;
+
+      li {
+        list-style-type: none;
+        display: flex;
+        color: #ddd;
+        font-weight: 900;
+        font-size: 1.8em;
+        text-transform: uppercase;
+
+        a {
+          color: white;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }
