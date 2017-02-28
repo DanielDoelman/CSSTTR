@@ -1,5 +1,7 @@
 :focus {
   background-color: #ffb300;
+  box-shadow: 0 0 20px #ffb300;
+  outline: 0;
 }
 @font-face {
   font-family: Ampersand;
@@ -64,6 +66,10 @@ form button[type="submit"] {
   text-align: center;
   font-size: 1em;
   margin-top: 2em;
+  transition: background 0.2s ease-in-out;
+}
+form button[type="submit"]:hover {
+  background-color: #0b51c5;
 }
 #close {
   width: 1em;
@@ -91,6 +97,9 @@ form button[type="submit"] {
   display: none;
   transition: all ease-out 0.3s;
   z-index: 9998;
+}
+#toggle:hover {
+  background-color: #000000;
 }
 #toggle:before {
   content: 'menu';
@@ -272,10 +281,17 @@ input:not(:focus) + .callout:not(:hover) {
   transform: translateX(0);
 }
 main {
-  max-width: 80vw;
+  padding: 0 3vw;
   transition: 1s;
   margin-left: auto;
   margin-right: auto;
+}
+main .media-item:hover article {
+  opacity: .5;
+  transition: all 0.2s ease-in-out;
+}
+main .media-item:hover article:hover {
+  opacity: 1;
 }
 main .row {
   display: flex;
@@ -420,12 +436,91 @@ fieldset svg {
 .progress progress + ol li {
   list-style-type: none;
   display: flex;
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 900;
   font-size: 1.8em;
   text-transform: uppercase;
+  cursor: not-allowed;
 }
 .progress progress + ol li a {
   color: white;
   text-decoration: none;
+}
+.picture-with-subtitle {
+  max-width: 30em;
+  padding: 1em;
+  background-color: white;
+  color: #666;
+  margin: 1vw;
+}
+.chatbox {
+  background-color: #4285f4;
+  display: flex;
+  padding: 1.5em 4em;
+  position: relative;
+  margin-top: 6em;
+}
+.chatbox:after {
+  content: '';
+  height: .6em;
+  width: 100%;
+  background-image: linear-gradient(90deg, #259b24 11px, transparent 0), linear-gradient(90deg, #ff5722 23px, transparent 0), linear-gradient(90deg, #ffb300 41px, transparent 0);
+  background-size: 30px 100%, 60px 100%, 90px 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.chatbox ol {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  padding: 0;
+  box-sizing: border-box;
+}
+.chatbox ol + form[action="/"] {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.chatbox ol li {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  list-style-type: none;
+  width: 40vw;
+  box-sizing: border-box;
+  background-color: white;
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+.chatbox ol li:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.chatbox footer {
+  width: 100%;
+  text-align: right;
+  font-size: .6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.chatbox footer p[data-status="READ"] {
+  color: #43bb82;
+  font-weight: 800;
+}
+.chatbox label[for="field-message"] {
+  margin-top: 1em;
+  color: white;
+}
+.chatbox textarea {
+  height: 16.5em;
+}
+.chatbox button[type="submit"] {
+  background-color: #43bb82;
+  height: 2.6em;
+  margin-top: 1em;
+}
+.chatbox button[type="submit"]:hover {
+  background-color: #3ca875;
 }
