@@ -1,15 +1,7 @@
-:focus {
-  background-color: #ffb300;
-  box-shadow: 0 0 20px #ffb300;
-  outline: 0;
-}
 @font-face {
   font-family: Ampersand;
   src: local('Delicious'), local('Goudy Old Style'), local('Palatino'), local('Book Antiqua');
   unicode-range: 0026;
-}
-.ampersand {
-  font-family: Ampersand, "Montserrat", sans-serif;
 }
 body {
   margin: 0;
@@ -19,11 +11,16 @@ body {
 img {
   max-width: 100%;
 }
-@keyframes loader {
-  to {
-    background-position: -816px 0;
-  }
+:focus {
+  background-color: #ffb300;
+  box-shadow: 0 0 20px #ffb300;
+  outline: 0;
 }
+.ampersand {
+  font-family: Ampersand, "Montserrat", sans-serif;
+}
+
+/* Loader */
 .loader {
   white-space: nowrap;
   overflow: hidden;
@@ -40,6 +37,42 @@ img {
   left: 0;
   right: 0;
 }
+@keyframes loader {
+  to {
+    background-position: -816px 0;
+  }
+}
+
+header {
+  height: 6em;
+  text-align: center;
+  background-color: #4285f4;
+  margin-bottom: 2em;
+}
+header:before {
+  content: '';
+  height: .6em;
+  width: 100%;
+  background-image: linear-gradient(90deg, #259b24 11px, transparent 0), linear-gradient(90deg, #ff5722 23px, transparent 0), linear-gradient(90deg, #ffb300 41px, transparent 0);
+  background-size: 30px 100%, 60px 100%, 90px 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+header h1 {
+  margin: 0;
+  padding: 1em 0;
+  color: white;
+  font-size: 1.8em;
+}
+@media (max-width: 24em) {
+  header h1 {
+    font-size: 1em;
+    line-height: 4.5em;
+  }
+}
+
+/* Login modal */
 .modal {
   display: none;
   width: 15em;
@@ -109,6 +142,8 @@ form button[type="submit"]:hover {
   text-decoration: none;
   color: white;
 }
+
+/* Navigation */
 #toggle {
   position: fixed;
   top: 2em;
@@ -141,34 +176,7 @@ form button[type="submit"]:hover {
   top: 40%;
   transform: translateY(-50%);
 }
-header {
-  height: 6em;
-  text-align: center;
-  background-color: #4285f4;
-  margin-bottom: 2em;
-}
-header:before {
-  content: '';
-  height: .6em;
-  width: 100%;
-  background-image: linear-gradient(90deg, #259b24 11px, transparent 0), linear-gradient(90deg, #ff5722 23px, transparent 0), linear-gradient(90deg, #ffb300 41px, transparent 0);
-  background-size: 30px 100%, 60px 100%, 90px 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-header h1 {
-  margin: 0;
-  padding: 1em 0;
-  color: white;
-  font-size: 1.8em;
-}
-@media (max-width: 24em) {
-  header h1 {
-    font-size: 1em;
-    line-height: 4.5em;
-  }
-}
+
 input:not(:focus) + .callout:not(:hover) {
   transform: scale(0);
   transition: .25s transform;
@@ -199,6 +207,15 @@ input:not(:focus) + .callout:not(:hover) {
 #menu {
   transition: all ease-out 0.3s;
   padding: 1em 0;
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background-color: #1d1d1b;
+  transform: translateX(-250px);
 }
 #menu a {
   color: white;
@@ -206,14 +223,15 @@ input:not(:focus) + .callout:not(:hover) {
 #menu ul {
   margin: 0;
   padding: 0;
-  background-color: #1a2940;
+  background-color: transparant;
+  text-align: left;
 }
 #menu ul li {
-  display: inline-flex;
+  display: block;
   position: relative;
 }
 #menu ul li > a {
-  display: inline-block;
+  display: block;
   padding: 0.8em;
   text-decoration: none;
 }
@@ -223,17 +241,32 @@ input:not(:focus) + .callout:not(:hover) {
   -webkit-transition: all ease-out 0.1s;
 }
 #menu ul li ul {
-  display: none;
-  position: absolute;
   top: 2.8em;
   width: 12.5em;
   text-align: left;
+  display: none;
+  position: static;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 #menu ul li ul li {
   display: block;
+  font-size: .8em;
 }
 #menu ul li ul li a {
   display: block;
+}
+#menu ul li.open > a {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#menu ul li.open > a > i {
+  transform: rotateZ(90deg);
+}
+#menu ul li.open > ul {
+  display: block;
+}
+#menu ul li:hover > ul {
+  display: none;
 }
 #menu ul li:hover > a {
   background-color: rgba(0, 0, 0, 0.2);
@@ -247,56 +280,28 @@ input:not(:focus) + .callout:not(:hover) {
 #toggle {
   display: block;
 }
-#content {
-  margin-top: 65px;
-  transition: all ease-out 0.3s;
-}
-#menu {
-  position: fixed;
-  width: 250px;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  overflow-y: auto;
-  background-color: #1d1d1b;
-  transform: translateX(-250px);
-}
-#menu ul {
-  text-align: left;
-  background-color: transparent;
-}
-#menu ul li {
+#menu ul ul {
   display: block;
-}
-#menu ul li a {
-  display: block;
-}
-#menu ul li a > i {
-  float: right;
-}
-#menu ul li ul {
-  display: none;
   position: static;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.2);
 }
-#menu ul li ul li {
+#menu ul ul li {
   font-size: .8em;
 }
-#menu ul li:hover > ul {
+#menu ul:hover > ul {
   display: none;
 }
-#menu ul li:hover > a > i {
+#menu ul:hover > a > i {
   transform: rotateZ(0);
 }
-#menu ul li.open > a {
+#menu ul.open > a {
   background-color: rgba(0, 0, 0, 0.3);
 }
-#menu ul li.open > a > i {
+#menu ul.open > a > i {
   transform: rotateZ(90deg);
 }
-#menu ul li.open > ul {
+#menu ul.open > ul {
   display: block;
 }
 .open-menu {
@@ -310,6 +315,8 @@ input:not(:focus) + .callout:not(:hover) {
   z-index: 3;
   transform: translateX(0);
 }
+
+/* Main */
 main {
   padding: 0 3vw;
   transition: 1s;
@@ -388,6 +395,8 @@ main .row article .content {
     flex: inherit;
   }
 }
+
+/* Rating */
 .rating {
   padding-top: 1em;
   font-size: 0.6em;
@@ -446,6 +455,8 @@ fieldset svg {
   display: flex;
   width: 1.5em;
 }
+
+/* Progressbar */
 .progress {
   padding: 1em 9em;
   font-size: 0.6em;
@@ -508,6 +519,8 @@ fieldset svg {
     font-size: .6em;
   }
 }
+
+/* Picture with subtitle */
 .picture-with-subtitle {
   max-width: 30em;
   padding: 1em;
@@ -527,6 +540,8 @@ fieldset svg {
     max-width: 100%;
   }
 }
+
+/* Chat */
 .chatbox {
   background-color: #4285f4;
   display: flex;

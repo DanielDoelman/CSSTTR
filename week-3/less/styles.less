@@ -239,6 +239,15 @@ input:not(:focus) + .callout:not(:hover) {
 #menu {
     transition: all ease-out 0.3s;
     padding: 1em 0;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: #1d1d1b;
+    transform: translateX(-250px);
 
     a {
         color: white;
@@ -247,14 +256,15 @@ input:not(:focus) + .callout:not(:hover) {
     ul {
         margin: 0;
         padding: 0;
-        background-color: #1a2940;
+        background-color: transparant;
+        text-align: left;
 
         li {
-            display: inline-flex;
+            display: block;
             position: relative;
 
             & > a {
-                display: inline-block;
+                display: block;
                 padding: 0.8em;
                 text-decoration: none;
 
@@ -266,14 +276,17 @@ input:not(:focus) + .callout:not(:hover) {
             }
 
             ul {
-                display: none;
-                position: absolute;
                 top: 2.8em;
                 width: 12.5em;
                 text-align: left;
+                display: none;
+                position: static;
+                width: 100%;
+                background-color: fade(#ffffff, 20%);
 
                 li {
                     display: block;
+                    font-size: .8em;
 
                     a {
                         display: block;
@@ -281,7 +294,26 @@ input:not(:focus) + .callout:not(:hover) {
                 }
             }
 
+            &.open {
+
+                & > a {
+
+                    background-color: fade(black,30%);
+
+                    & > i {
+                        transform: rotateZ(90deg);
+                    }
+                }
+
+                & > ul {
+                    display: block;
+                }
+            }
+
             &:hover {
+              & > ul {
+                  display: none;
+              }
                 & > a {
                     background-color: fade(black,20%);
 
@@ -307,29 +339,13 @@ input:not(:focus) + .callout:not(:hover) {
 }
 
 #menu {
-    position: fixed;
-    width: 250px;
-    height: 100%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    overflow-y: auto;
-    background-color: #1d1d1b;
-    transform: translateX(-250px);
+
 
     ul {
-        text-align: left;
-        background-color: transparent;
+
 
         li {
-            display: block;
 
-            a {
-                display: block;
-
-                & > i {
-                    float: right;
-                }
             }
 
             ul {
@@ -373,7 +389,7 @@ input:not(:focus) + .callout:not(:hover) {
                 }
             }
         }
-    }
+    
 }
 
 .open-menu {
