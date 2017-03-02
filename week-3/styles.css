@@ -1,8 +1,11 @@
+/* Font */
 @font-face {
   font-family: Ampersand;
   src: local('Delicious'), local('Goudy Old Style'), local('Palatino'), local('Book Antiqua');
   unicode-range: 0026;
 }
+
+/* Algemeen */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -10,6 +13,10 @@ body {
 }
 img {
   max-width: 100%;
+}
+textarea,
+input {
+  font-size: 1em;
 }
 :focus {
   background-color: #ffb300;
@@ -603,7 +610,7 @@ fieldset svg {
   color: white;
 }
 .chatbox textarea {
-  height: 16.5em;
+  height: 15em;
 }
 .chatbox button[type="submit"] {
   background-color: #43bb82;
